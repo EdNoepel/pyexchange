@@ -1,6 +1,7 @@
 import logging
 import sys
 import time
+from pprint import pprint
 
 from pyexchange.erisx import ErisxApi
 
@@ -14,12 +15,14 @@ client = ErisxApi(fix_trading_endpoint=sys.argv[1], fix_trading_user=sys.argv[2]
 # print(sys.argv)
 print("ErisxApi created\n")
 
-# print(client.get_balances())
-time.sleep(15)
+print(client.get_balances())
+# time.sleep(3)
 
-print(f"Received security list with message length {len(str(client.get_markets()))}")
-time.sleep(25)
+securities = client.get_markets()
+print(f"Received {len(securities)} securities:")
+pprint(securities)
+# time.sleep(3)
 
 print("Disconnecting")
 del client
-time.sleep(2)
+# time.sleep(1)
