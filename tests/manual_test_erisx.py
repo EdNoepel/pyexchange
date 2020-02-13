@@ -16,13 +16,15 @@ client = ErisxApi(fix_trading_endpoint=sys.argv[1], fix_trading_user=sys.argv[2]
 print("ErisxApi created\n")
 
 print(client.get_balances())
-# time.sleep(3)
+time.sleep(30)
 
 securities = client.get_markets()
 print(f"Received {len(securities)} securities:")
 pprint(securities)
-# time.sleep(3)
+time.sleep(12)
 
 print("Disconnecting")
 del client
-# time.sleep(1)
+time.sleep(3)
+
+
